@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "08wHcmjJn7hLTbKDTfX0MCBnPjCX0OhGGMDIruHfkjJ9j1+VtsXd3mtMLoRLw03pkTIvPmls/fdf0d/eaDl5hg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\humbe\\Documents\\Development\\ClientConsumerRMQ\\ClientConsumer\\ChatConsumer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\humbe\\.nuget\\packages\\rabbitmq.client\\6.1.0\\rabbitmq.client.6.1.0.nupkg.sha512",
+    "C:\\Users\\humbe\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\humbe\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}
