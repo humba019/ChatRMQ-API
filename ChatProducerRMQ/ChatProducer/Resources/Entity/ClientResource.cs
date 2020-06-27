@@ -9,5 +9,6 @@ namespace ChatProducer.Resources.Entity
     {
         public string ClientName { get; set; }
         public string ClientEmail { get; set; }
+        public string ClientPass { get; set; }
     }
 }

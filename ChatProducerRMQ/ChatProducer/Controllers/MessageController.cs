@@ -1,15 +1,17 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
-using ChatProducer.Domain;
+using ChatProducer.Domain.Models;
 using ChatProducer.Extensions;
 using ChatProducer.Resources;
 using ChatProducer.Resources.Entity;
 using ChatProducer.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,6 +19,8 @@ using RabbitMQ.Client;
 
 namespace ChatProducer.Controllers
 {
+    [ApiController]
+    [Authorize]
     [Route("api/message")]
     public class MessageController : Controller
     {

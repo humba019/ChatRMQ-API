@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\humbe\\Documents\\Development\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj": {}
+    "C:\\Users\\humbe\\Documents\\Development\\ChatRMQ\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\humbe\\Documents\\Development\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj": {
+    "C:\\Users\\humbe\\Documents\\Development\\ChatRMQ\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\humbe\\Documents\\Development\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj",
+        "projectUniqueName": "C:\\Users\\humbe\\Documents\\Development\\ChatRMQ\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj",
         "projectName": "ChatProducer",
-        "projectPath": "C:\\Users\\humbe\\Documents\\Development\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj",
+        "projectPath": "C:\\Users\\humbe\\Documents\\Development\\ChatRMQ\\ChatProducerRMQ\\ChatProducer\\ChatProducer.csproj",
         "packagesPath": "C:\\Users\\humbe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\humbe\\Documents\\Development\\ChatProducerRMQ\\ChatProducer\\obj\\",
+        "outputPath": "C:\\Users\\humbe\\Documents\\Development\\ChatRMQ\\ChatProducerRMQ\\ChatProducer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\humbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,6 +46,14 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[3.1.5, )"
@@ -53,6 +61,18 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.5, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.7.0, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -65,6 +85,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.7.0, )"
             }
           },
           "imports": [

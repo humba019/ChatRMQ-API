@@ -1,4 +1,5 @@
-﻿using ChatProducer.Domain;
+﻿
+using ChatProducer.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,8 @@ namespace ChatProducer.Persistence.Contexts
             builder.Entity<Client>().Property(a => a.ClientName).IsRequired();
 
             builder.Entity<Client>().HasData(
-                new Client { ClientName = "Humberto", ClientEmail = "humba01@email" },
-                new Client { ClientName = "Doisberto", ClientEmail = "humba02@email" }
+                new Client { ClientName = "Humberto", ClientEmail = "humba01@email", ClientPass = "12345" },
+                new Client { ClientName = "Doisberto", ClientEmail = "humba02@email", ClientPass = "12345" }
             );
 
 

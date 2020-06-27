@@ -1,4 +1,4 @@
-﻿using ChatProducer.Domain;
+﻿using ChatProducer.Domain.Models;
 using ChatProducer.Persistence.Repositories.Interface;
 using ChatProducer.Services.Communication;
 using ChatProducer.Services.Interfaces;

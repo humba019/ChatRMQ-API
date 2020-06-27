@@ -1,4 +1,5 @@
-﻿using ChatProducer.Domain;
+﻿
+using ChatProducer.Domain.Models;
 using ChatProducer.Services.Communication;
 using System;
 using System.Collections.Generic;

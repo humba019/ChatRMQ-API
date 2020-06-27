@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ChatProducer.Domain;
+using ChatProducer.Domain.Models;
 using ChatProducer.Resources.Entity;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,8 @@ namespace ChatProducer.Mapping
         {
             CreateMap<Chat, ChatResource>();
             CreateMap<Client, ClientResource>();
-            CreateMap<Message, MessageResource>();          
+            CreateMap<Message, MessageResource>();
+            CreateMap<Token, TokenResource>();
         }
     }
 }

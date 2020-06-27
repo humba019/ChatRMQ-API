@@ -14,5 +14,7 @@ namespace ChatProducer.Resources
         [Required]
         [MaxLength(40)]
         public string ClientEmail { get; set; }
+        [Required]
+        public string ClientPass { get; set; }
     }
 }

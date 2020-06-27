@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using AutoMapper;
+using ChatProducer.Domain;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using ChatProducer.Extensions;
+using ChatProducer.Domain.Models;
 
 namespace ChatProducer
 {
@@ -33,7 +39,7 @@ namespace ChatProducer
         {
             services.AddDbContext<AppDbContext>(opt => {
                 opt.UseInMemoryDatabase("client-chat");
-            });
+            }); 
 
             services.AddScoped<IChatRepository, ChatRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
@@ -47,6 +53,8 @@ namespace ChatProducer
             services.AddAutoMapper(typeof(Startup));
             services.AddHealthChecks();
             services.AddControllers();
+
+            services.AddTokenAuthentication(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,8 +65,10 @@ namespace ChatProducer
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseHttpsRedirection();
 
+            app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

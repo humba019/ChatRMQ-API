@@ -1,4 +1,5 @@
-﻿using ChatProducer.Domain;
+﻿
+using ChatProducer.Domain.Models;
 using ChatProducer.Persistence.Contexts;
 using ChatProducer.Persistence.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;

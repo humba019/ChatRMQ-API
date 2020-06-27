@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ChatProducer.Domain;
+using ChatProducer.Domain.Models;
 using ChatProducer.Resources;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,8 @@ namespace ChatProducer.Mapping
             CreateMap<SaveChatResource, Chat>();
             CreateMap<SaveClientResource, Client>();
             CreateMap<SaveMessageResource, Message>();
-            
+            CreateMap<SaveTokenResource, Token>();
+
         }
     }
 }
