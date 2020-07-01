@@ -10,6 +10,7 @@ namespace ChatProducer.Persistence.Repositories.Interface
     public interface IChatRepository
     {
         Task<IEnumerable<Chat>> ListAsync();
+        Task<List<Chat>> FindAllChatsByEmailAsync(string email);
         Task AddAsync(Chat chat);
         Task<Chat> FindByIdAsync(int id);
         Task<Chat> FindByToAsync(string to);

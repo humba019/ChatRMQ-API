@@ -11,8 +11,10 @@ namespace ChatProducer.Services.Interfaces
     public interface IClientService
     {
         Task<IEnumerable<Client>> ListAsync();
+        Task<List<ClientChat>> FindAllChatsByEmailAsync(string email);
         Task<ClientResponse> SaveAsync(Client client);
         Task<ClientResponse> UpdateAsync(string email, Client client);
         Task<ClientResponse> DeleteAsync(string email);
+        Task<ClientResponse> FindByEmailAsync(string email);
     }
 }

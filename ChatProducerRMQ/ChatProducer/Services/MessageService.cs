@@ -3,9 +3,13 @@ using ChatProducer.Domain.Models;
 using ChatProducer.Persistence.Repositories.Interface;
 using ChatProducer.Services.Communication;
 using ChatProducer.Services.Interfaces;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ChatProducer.Services
@@ -49,17 +53,69 @@ namespace ChatProducer.Services
             return await _messageRepository.ListAsync();
         }
 
-        public async Task<MessageResponse> SaveAsync(Message message)
+        public async Task<List<Message>> ListByChatIdAsync(int id)
+        {
+            var factory = new ConnectionFactory() { HostName = "localhost" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: $"message_C{id}",
+                                     durable: false,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    var messageObj = JsonSerializer.Deserialize<Message>(message);
+                };
+
+                channel.BasicConsume(queue: $"message_C{id}",
+                                     autoAck: true,
+                                     consumer: consumer);
+            }
+
+            return await _messageRepository.FindByIdChatAsync(id);
+        }
+
+        public async Task<List<Message>> ListByClientEmailAsync(string email)
+        {
+            return await _messageRepository.FindByClientEmailAsync(email);
+        }
+
+        public async Task<MessageResponse> SaveAsync(Message messageObj)
         {
             try
             {
-                var search = await _chatRepository.FindByIdAsync(message.ChatId);
-                if (search == null){ return new MessageResponse($"Chat {message.ChatId} not found"); }
+                var search = await _chatRepository.FindByIdAsync(messageObj.ChatId);
+                if (search == null){ return new MessageResponse($"Chat {messageObj.ChatId} not found"); }
 
-                await _messageRepository.AddAsync(message);
+                var factory = new ConnectionFactory() { HostName = "localhost" }; ;
+                using (var connection = factory.CreateConnection())
+                using (var channel = connection.CreateModel())
+                {
+                    channel.QueueDeclare(queue: $"message_C{messageObj.ChatId}",
+                                            durable: false,
+                                            exclusive: false,
+                                            autoDelete: false,
+                                            arguments: null);
+
+                    string message = JsonSerializer.Serialize(messageObj);
+                    var body = Encoding.UTF8.GetBytes(message);
+
+                    channel.BasicPublish(exchange: "",
+                                            routingKey: $"message_C{messageObj.ChatId}",
+                                            basicProperties: null,
+                                            body: body);
+                }
+
+                await _messageRepository.AddAsync(messageObj);
                 await _unitOfWork.CompleteAsync();
 
-                return new MessageResponse(message);
+                return new MessageResponse(messageObj);
             }
             catch (Exception e)
             {

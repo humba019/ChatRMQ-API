@@ -19,7 +19,6 @@ namespace ChatProducer.Persistence.Repositories
             await _context.Chat.AddAsync(chat);
         }
 
-
         public async Task<Chat> FindByIdAsync(int id)
         {
             return await _context.Chat.FindAsync(id);
@@ -56,6 +55,20 @@ namespace ChatProducer.Persistence.Repositories
         public async Task<IEnumerable<Chat>> ListAsync()
         {
             return await _context.Chat.ToListAsync();
+        }
+
+        public async Task<List<Chat>> FindAllChatsByEmailAsync(string email)
+        {
+            List<Chat> chats = new List<Chat>();
+            foreach (Chat chat in await _context.Chat.ToListAsync())
+            {
+                if (chat.From.Equals(email))
+                {
+                    chats.Add(chat);
+                }
+            }
+
+            return chats;
         }
 
         public void Remove(Chat chat)

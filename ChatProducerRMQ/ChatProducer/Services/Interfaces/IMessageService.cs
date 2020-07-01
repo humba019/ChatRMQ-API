@@ -11,6 +11,8 @@ namespace ChatProducer.Services.Interfaces
     public interface IMessageService
     {
         Task<IEnumerable<Message>> ListAsync();
+        Task<List<Message>> ListByChatIdAsync(int id);
+        Task<List<Message>> ListByClientEmailAsync(string email);
         Task<MessageResponse> SaveAsync(Message message);
         Task<MessageResponse> UpdateAsync(int id, Message message);
         Task<MessageResponse> DeleteAsync(int id);

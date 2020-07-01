@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
+using ChatProducer.Configs;
 using ChatProducer.Domain.Models;
 using ChatProducer.Extensions;
 using ChatProducer.Resources;
@@ -27,7 +28,6 @@ namespace ChatProducer.Controllers
         private ILogger<ClientController> _logger;
         private readonly IMessageService _messageService;
         private readonly IMapper _mapper;
-
         public MessageController(
             ILogger<ClientController> logger, 
             IMessageService messageService, 
@@ -47,6 +47,23 @@ namespace ChatProducer.Controllers
             return resources;
         }
 
+        [HttpGet("find/{id}")]
+        public async Task<IEnumerable<MessageResource>> GetAllByChatIdAsync(int id)
+        {
+            var messages = await _messageService.ListByChatIdAsync(id);
+            var resources = _mapper.Map<List<Message>, List<MessageResource>>(messages);
+
+            return resources;
+        }
+        [HttpGet("find-message/{email}")]
+        public async Task<IEnumerable<MessageResource>> GetAllByClientEmailAsync(string email)
+        {
+            var messages = await _messageService.ListByClientEmailAsync(email);
+            var resources = _mapper.Map<List<Message>, List<MessageResource>>(messages);
+
+            return resources;
+        }
+
         [HttpPost]
         public async Task<ActionResult<MessageResource>> PostMessageAsync([FromBody] SaveMessageResource resource)
         {
@@ -59,40 +76,13 @@ namespace ChatProducer.Controllers
             var result = await _messageService.SaveAsync(messageObj);
 
             if (!result.Success)
+            {
                 return BadRequest(result.Message);
+            }
 
             var messageResource = _mapper.Map<Message, MessageResource>(result.MessageObj);
-            try
-            {
-                var factory = new ConnectionFactory() { HostName = "localhost" };
-                using (var connection = factory.CreateConnection())
-                using (var channel = connection.CreateModel())
-                {
-                    channel.QueueDeclare(queue: $"message_C{messageResource.Chat.ChatId}",
-                                         durable: false,
-                                         exclusive: false,
-                                         autoDelete: false,
-                                         arguments: null);
 
-                    string message = JsonSerializer.Serialize(messageResource);
-                    var body = Encoding.UTF8.GetBytes(message);
-
-                    channel.BasicPublish(exchange: "",
-                                         routingKey: $"message_C{messageResource.Chat.ChatId}",
-                                         basicProperties: null,
-                                         body: body);
-                }
-
-
-                return Ok(messageResource);
-
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError("Erro no POST para api/client ", ex);
-
-                return BadRequest(result.Message);
-            }
+            return Ok(messageResource);
 
         }
         

@@ -10,6 +10,7 @@ using ChatProducer.Domain.Models;
 using ChatProducer.Extensions;
 using ChatProducer.Resources;
 using ChatProducer.Resources.Entity;
+using ChatProducer.Services.Communication;
 using ChatProducer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +41,28 @@ namespace ChatProducer.Controllers
             var resources = _mapper.Map<IEnumerable<Client>, IEnumerable<ClientResource>>(clients);
 
             return resources;
+        }
+
+        [HttpGet("find/{email}")]
+        public async Task<ActionResult<ClientResource>> GetByEmailAsync(string email)
+        {
+            var result = await _clientService.FindByEmailAsync(email);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Message);
+            }
+
+            var clientResource = _mapper.Map<Client, ClientResource>(result.Client);
+
+            return Ok(clientResource);
+        }
+        [HttpGet("find-chat/{email}")]
+        public async Task<List<ClientChat>> GetChatsByEmailAsync(string email)
+        {
+            var clients = await _clientService.FindAllChatsByEmailAsync(email);
+
+            return clients;
         }
 
         [HttpPost]

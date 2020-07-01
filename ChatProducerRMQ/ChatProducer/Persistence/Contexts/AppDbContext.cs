@@ -37,9 +37,9 @@ namespace ChatProducer.Persistence.Contexts
             builder.Entity<Chat>().Property(a => a.From).IsRequired();
             builder.Entity<Chat>().Property(a => a.To).IsRequired();
 
-            //builder.Entity<Chat>().HasData(
-            //    new Chat { ChatId = 1, From = "humba02@email", To = "humba01@email" }
-            //);
+            builder.Entity<Chat>().HasData(
+               new Chat { ChatId = 1, From = "humba02@email", To = "humba01@email" }
+            );
 
 
             builder.Entity<Message>().ToTable("MESSAGE");
@@ -48,12 +48,10 @@ namespace ChatProducer.Persistence.Contexts
             builder.Entity<Message>().Property(a => a.MessageContent).IsRequired();
             builder.Entity<Message>().Property(a => a.ChatId).IsRequired();
 
-            //builder.Entity<Message>().HasData(
-            //    new Message { MessageId = 1, MessageContent = "Olá boa tarde!", ChatId = 1 }
-            //);
-
+            builder.Entity<Message>().HasData(
+               new Message { MessageId = 1, MessageContent = "Olá boa tarde!", ChatId = 1 }
+            );
 
         }
-
     }
 }

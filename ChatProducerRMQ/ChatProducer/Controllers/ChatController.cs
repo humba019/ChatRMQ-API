@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using AutoMapper;
+using ChatProducer.Configs;
 using ChatProducer.Domain.Models;
 using ChatProducer.Extensions;
 using ChatProducer.Resources;

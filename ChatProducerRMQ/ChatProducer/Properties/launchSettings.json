@@ -3,8 +3,8 @@
   "profiles": {
     "ChatProducer": {
       "commandName": "Project",
-      "launchBrowser": false,
-      "launchUrl": "api/client",
+      "launchBrowser": true,
+      "launchUrl": "",
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
