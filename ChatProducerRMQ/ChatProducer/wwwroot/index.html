@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+</head>
+<body>
+    <form action="javascript:void(0);" method="POST">
+        <input type="email" id="clientemail" placeholder="Your email address">
+        <input type="password" id="clientpass" placeholder="Your pass">
+        <p id="bearer_token"></p>
+        <button onclick="login()">Sign In</button>
+
+        <div id="chats">
+        </div>
+        <div id="messages" style="display:none;">
+        </div>
+    </form>
+    <script src="js/script.js" asp-append-version="true"></script>
+</body>
+</html>
