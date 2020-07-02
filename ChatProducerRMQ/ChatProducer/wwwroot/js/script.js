@@ -1,5 +1,6 @@
 ﻿const uriLogin = 'api/login';
 const uriChats = 'api/client/find-chat/';
+const uriSendMessage = 'api/message';
 const uriMessagesChat = 'api/message/find-message/';
 let chats = [];
 let messagesChat = [];
@@ -115,6 +116,7 @@ function _displayChats(data) {
 
         let openChatButton = document.createElement('button');
         openChatButton.innerText = 'Open';
+        openChatButton.setAttribute('class', 'button');
         openChatButton.setAttribute('onclick', 'openChat()');
 
         chat_content.appendChild(clientname);
@@ -151,35 +153,79 @@ function _displaMessages(data) {
 
     //const button = document.createElement('button');
 
+    let divinputmessage = document.createElement('div');
+    divinputmessage.setAttribute('id', 'input-message');
+
+    let messagecontent = document.createElement('textarea');
+    messagecontent.setAttribute('id', 'messagecontent');
+
+    let openChatButton = document.createElement('button');
+    openChatButton.innerText = 'Send';
+    openChatButton.setAttribute('class', 'button');
+    openChatButton.setAttribute('onclick', `sendMessage(${data[0].chat.chatId})`);
+
+    divinputmessage.appendChild(messagecontent);
+    divinputmessage.appendChild(openChatButton);
+
+    let divmessageGlobal = document.createElement('div');
+
     data.forEach(message => {
 
         let divmessage = document.createElement('div');
 
-        if (message.chat.from == user.clientEmail) { divmessage.style.color = "#000"; divmessage.style.backgroundColor = "#fff"; }
-        else { divmessage.style.color = "#fff"; divmessage.style.backgroundColor = "#000"; }
-
-        let fromEmail = document.createElement('p');
-        fromEmail.innerText = "from: "+message.chat.from;
-
-        let toEmail = document.createElement('p');
-        toEmail.innerText = "to: " +message.chat.to;
-
         let messageContent = document.createElement('h1');
         messageContent.innerText = message.messageContent;
 
+        let fromEmail = document.createElement('p');
+        fromEmail.innerText = message.chat.from;
+
+        if (message.chat.from == user.clientEmail) {
+            divmessage.style.color = "#000"; divmessage.style.marginRight = "0px"; messageContent.style.color = "#000"; divmessage.style.backgroundColor = "#fff";
+        } else {
+            divmessage.style.color = "#fff"; divmessage.style.marginLeft = "0px"; divmessage.style.borderRadius = "0px 10px 10px 0px"; messageContent.style.color = "#fff"; divmessage.style.backgroundColor = "#000";
+        }
 
         divmessage.appendChild(fromEmail);
-        divmessage.appendChild(toEmail);
         divmessage.appendChild(messageContent);
 
-        messages.appendChild(divmessage);
+        divmessageGlobal.appendChild(divmessage);
+
         //let td3 = tr.insertCell(2);
         //td3.appendChild(editButton);
 
         //let td4 = tr.insertCell(3);
         //td4.appendChild(deleteButton);
     });
+
+    divmessageGlobal.appendChild(divinputmessage);
+    messages.appendChild(divmessageGlobal);
     messages.style.display = "block";
 
     messagesChat = data;
+}
+
+function sendMessage(id){
+
+    const messagecontent = document.getElementById('messagecontent');
+
+    const message = {
+        messageContent: messagecontent.value,
+        chatId: id
+    };
+
+    fetch(uriSendMessage, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer  ' + user.clientToken
+        },
+        body: JSON.stringify(message)
+    })
+        .then(response => response.json())
+        .then(data => {
+            messagecontent.value = '';
+            openChat();
+        })
+        .catch(error => console.error('Unable to add item.', error));
 }
