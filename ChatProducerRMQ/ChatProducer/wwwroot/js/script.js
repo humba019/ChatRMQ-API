@@ -5,6 +5,7 @@ const uriMessagesChat = 'api/message/find-message/';
 let chats = [];
 let messagesChat = [];
 let user = {};
+let chat_id = 0;
 
 function getChats() {
     fetch(uriChats + user.clientEmail, {
@@ -117,7 +118,7 @@ function _displayChats(data) {
         let openChatButton = document.createElement('button');
         openChatButton.innerText = 'Open';
         openChatButton.setAttribute('class', 'button');
-        openChatButton.setAttribute('onclick', 'openChat()');
+        openChatButton.setAttribute('onclick', `openChat(${client.chat.chatId})`);
 
         chat_content.appendChild(clientname);
         chat_content.appendChild(clientemail);
@@ -133,73 +134,58 @@ function _displayChats(data) {
     chats = data;
 }
 
-function openChat() {
+function openChat(id) {
+
+    setTimeout(function () {
+
     fetch(uriMessagesChat + user.clientEmail, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer  ' + user.clientToken
         }
     }).then(response => response.json())
-        .then(data => _displaMessages(data))
-        .catch(error => console.error('Unable to get items.', error));
+        .then(data => _displaMessages(data, id))
+            .catch(error => console.error('Unable to get items.', error));
+
+        openChat(id);
+    }, 1000);
 }
 
-function _displaMessages(data) {
+function _displaMessages(data, id) {
 
     const messages = document.getElementById('messages');
-    messages.innerHTML = '';
-
-    //_displayCount(data.length);
-
-    //const button = document.createElement('button');
-
-    let divinputmessage = document.createElement('div');
-    divinputmessage.setAttribute('id', 'input-message');
-
-    let messagecontent = document.createElement('textarea');
-    messagecontent.setAttribute('id', 'messagecontent');
-
-    let openChatButton = document.createElement('button');
-    openChatButton.innerText = 'Send';
-    openChatButton.setAttribute('class', 'button');
-    openChatButton.setAttribute('onclick', `sendMessage(${data[0].chat.chatId})`);
-
-    divinputmessage.appendChild(messagecontent);
-    divinputmessage.appendChild(openChatButton);
-
-    let divmessageGlobal = document.createElement('div');
+    const messages_finded = document.getElementById('messages_finded');
+    messages_finded.innerHTML = '';
+    const send_btn = document.getElementById('send');
 
     data.forEach(message => {
 
-        let divmessage = document.createElement('div');
+        let div = document.createElement('div');
 
-        let messageContent = document.createElement('h1');
-        messageContent.innerText = message.messageContent;
-
-        let fromEmail = document.createElement('p');
-        fromEmail.innerText = message.chat.from;
+        let h1 = document.createElement('h1');
+        h1.innerText = message.messageContent;
+        let p = document.createElement('p');
+        p.innerText = message.chat.from;
 
         if (message.chat.from == user.clientEmail) {
-            divmessage.style.color = "#000"; divmessage.style.marginRight = "0px"; messageContent.style.color = "#000"; divmessage.style.backgroundColor = "#fff";
+            div.style.marginRight = "0px";
+            div.style.backgroundColor = "#fff";
+            div.style.borderRadius = "10px 0px 0px 10px";
         } else {
-            divmessage.style.color = "#fff"; divmessage.style.marginLeft = "0px"; divmessage.style.borderRadius = "0px 10px 10px 0px"; messageContent.style.color = "#fff"; divmessage.style.backgroundColor = "#000";
+            div.style.marginLeft = "0px";
+            div.style.backgroundColor = "#e0afaf";
+            div.style.borderRadius = "0px 10px 10px 0px";
         }
 
-        divmessage.appendChild(fromEmail);
-        divmessage.appendChild(messageContent);
+        div.appendChild(h1);
+        div.appendChild(p);
+        messages_finded.appendChild(div);
 
-        divmessageGlobal.appendChild(divmessage);
-
-        //let td3 = tr.insertCell(2);
-        //td3.appendChild(editButton);
-
-        //let td4 = tr.insertCell(3);
-        //td4.appendChild(deleteButton);
     });
 
-    divmessageGlobal.appendChild(divinputmessage);
-    messages.appendChild(divmessageGlobal);
+    send_btn.setAttribute('onclick', `sendMessage(${id})`);
     messages.style.display = "block";
+    messages_finded.style.display = "block";
 
     messagesChat = data;
 }
@@ -225,7 +211,10 @@ function sendMessage(id){
         .then(response => response.json())
         .then(data => {
             messagecontent.value = '';
-            openChat();
+            openChat(id);
         })
         .catch(error => console.error('Unable to add item.', error));
+}
+
+function timeout() {
 }
