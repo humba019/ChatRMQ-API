@@ -55,13 +55,22 @@ namespace ChatProducer.Controllers
 
             return resources;
         }
-        [HttpGet("find-message/{email}")]
-        public async Task<IEnumerable<MessageResource>> GetAllByClientEmailAsync(string email)
+
+        [HttpGet("find-message/{email}/{consume}")]
+        public async Task<IEnumerable<MessageResource>> GetAllByClientEmailAsync(string email, string consume)
         {
-            var messages = await _messageService.ListByClientEmailAsync(email);
+            var messages = await _messageService.ListByClientEmailAsync(email, consume);
             var resources = _mapper.Map<List<Message>, List<MessageResource>>(messages);
 
             return resources;
+        }
+
+        [HttpGet("count-message/{email}")]
+        public async Task<ActionResult<uint>> CountByClientEmailAsync(string email)
+        {
+            uint messages = await _messageService.CountMessageByClientEmailAsync(email);
+
+            return Ok(messages);
         }
 
         [HttpPost]

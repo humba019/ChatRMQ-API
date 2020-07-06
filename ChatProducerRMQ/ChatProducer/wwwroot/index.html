@@ -4,119 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-
-        #input_message {
-            width: 70% !important;
-            height: 20% !important;
-            display: inline-block !important;
-            background-color: #fff;
-            float: left;
-            overflow-y: hidden !important;
-            overflow-x: hidden !important;
-        }
-
-        #input_message textarea {
-            width: 100%;
-            height: 50px;
-            font-size: 16pt;
-            font-weight: bold;
-            border: 0px;
-            color: #5c5c5c;
-            font-family: sans-serif;
-            background-color: #fff;
-            outline: none;
-            resize: none;
-        }
-
-        #input_button {
-            width: 30% !important;
-            height: 20% !important;
-            display: inline-block !important;
-            background-color: #fff;
-            overflow-y: hidden !important;
-            overflow-x: hidden !important;
-        }
-
-        #input_button button {
-            margin-top: 0px;
-            height: 70px;
-            width: 100%;
-            font-size: 16pt;
-            display: inline-block;
-            padding: 10px;
-        }
-
-        #messages {
-            width: 100%;
-            height: 100%;
-            margin: auto;
-        }
-
-        #messages div {
-            width: 100%;
-            height: 500px;
-            margin: auto;
-            background-color: #a52a2a;
-            overflow-y: scroll;
-            overflow-x: hidden !important;
-        }
-
-        #messages div div {
-            width: 50%;
-            height: auto;
-            margin-right: 0px;
-            margin-top: 10px !important;
-            margin-bottom: 10px !important;
-            background-color: #fff;
-            border-radius: 10px 0px 0px 10px;
-            overflow-y: hidden !important;
-            overflow-x: hidden !important;
-        }
-
-        #messages div div h1 {
-            color: #5c5c5c;
-            padding: 10px;
-            font-weight: bold;
-            word-wrap: break-word;
-            margin-bottom: 0px;
-            font-size: 15pt;
-        }
-
-        #messages div div p {
-            color: #c1c1c1;
-            padding: 5px;
-            font-weight: bold;
-            word-wrap: break-word;
-            text-align: right;
-            margin-top: 0px;
-        }
-
-        .button {
-            background-color: #fff;
-            color: #4f0606;
-            border: 4px solid #4f0606;
-            font-size: 14pt;
-            font-weight: bold;
-            font-family: sans-serif;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form action="javascript:void(0);" method="POST">
-        <input type="email" id="clientemail" placeholder="Your email address">
-        <input type="password" id="clientpass" placeholder="Your pass">
+        <div class="form_itens" id="form_login">
+            <div>
+                <label for="clientemail">Email</label><br>
+                <input type="email" name="clientemail" id="clientemail" value="humba02@email" placeholder="Your email address">
+            </div>
+            <div>
+                <label for="clientpass">Password</label><br>
+                <input type="password" name="clientpass" id="clientpass" value="12345" placeholder="Your pass">
+            </div>
+            <button class="button" onclick="login()">Sign In</button>
+        </div>
         <p id="bearer_token"></p>
-        <button onclick="login()">Sign In</button>
-        <div id="chats">
+        <div class="chats" id="chats">
         </div>
         <div id="messages" style="display:none;">
             <div id="messages_finded">
@@ -124,8 +28,8 @@
             <div id="input_message">
                 <textarea id="messagecontent">Type here...</textarea>
             </div>
-            <div id="input_button">
-                <button onclick="" class="button" id="send">Send</button>
+            <div id="input_button" onclick="">
+                <p>Send</p>
             </div>
         </div>
     </form>

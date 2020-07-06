@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RabbitMQ.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -16,5 +17,8 @@ namespace ChatProducer.Extensions
 
             return attributes?[0].Description ?? @enum.ToString();
         }
+
+
+        public static ConnectionFactory FactoryConfig = new ConnectionFactory() { HostName = "localhost" };
     }
 }

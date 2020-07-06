@@ -22,6 +22,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using ChatProducer.Extensions;
 using ChatProducer.Domain.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace ChatProducer
 {
@@ -65,10 +68,14 @@ namespace ChatProducer
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot"))
+            });
+
+            app.UseHttpsRedirection();
 
             app.UseRouting();
             app.UseAuthentication();
@@ -78,6 +85,7 @@ namespace ChatProducer
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

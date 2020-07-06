@@ -148,6 +148,7 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\ChatProducer.pdb
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -159,6 +160,7 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
@@ -173,6 +175,11 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
@@ -193,6 +200,7 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
@@ -258,7 +266,8 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.csprojAssemblyReference.cache
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.csproj.CoreCompileInputs.cache
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.AssemblyInfoInputs.cache
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.AssemblyInfo.cs
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.RazorTargetAssemblyInfo.cache
@@ -268,13 +277,3 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.pdb
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.genruntimeconfig.cache
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.csproj.CoreCompileInputs.cache
-C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.MvcApplicationPartsAssemblyInfo.cache

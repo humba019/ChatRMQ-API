@@ -3,6 +3,7 @@ using ChatProducer.Domain.Models;
 using ChatProducer.Persistence.Repositories.Interface;
 using ChatProducer.Services.Communication;
 using ChatProducer.Services.Interfaces;
+using ChatProducer.Extensions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -25,6 +26,7 @@ namespace ChatProducer.Services
             this._chatRepository = chatRepository;
             this._unitOfWork = unitOfWork;
         }
+
 
         public async Task<MessageResponse> DeleteAsync(int id)
         {
@@ -55,8 +57,7 @@ namespace ChatProducer.Services
 
         public async Task<List<Message>> ListByChatIdAsync(int id)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            using (var connection = factory.CreateConnection())
+            var connection = EnumExtensions.FactoryConfig.CreateConnection();
             using (var channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: $"message_C{id}",
@@ -81,9 +82,64 @@ namespace ChatProducer.Services
             return await _messageRepository.FindByIdChatAsync(id);
         }
 
-        public async Task<List<Message>> ListByClientEmailAsync(string email)
+        public async Task<List<Message>> ListByClientEmailAsync(string email, string consume)
         {
-            return await _messageRepository.FindByClientEmailAsync(email);
+            List<Message> messages = await _messageRepository.FindByClientEmailAsync(email);
+
+            if (consume != "false") 
+            {
+                foreach (Message message in messages)
+                {
+                    if (message.Chat.To == email)
+                    {
+                        var connection = EnumExtensions.FactoryConfig.CreateConnection();
+                        using (var channel = connection.CreateModel())
+                        {
+                            channel.QueueDeclare(queue: $"message_C{message.Chat.ChatId}",
+                                                 durable: false,
+                                                 exclusive: false,
+                                                 autoDelete: false,
+                                                 arguments: null);
+
+                            var consumer = new EventingBasicConsumer(channel);
+                            consumer.Received += (model, ea) =>
+                            {
+                                var body = ea.Body.ToArray();
+                                var message = Encoding.UTF8.GetString(body);
+                                var messageObj = JsonSerializer.Deserialize<Message>(message);
+                            };
+
+                            channel.BasicConsume(queue: $"message_C{message.Chat.ChatId}",
+                                                 autoAck: true,
+                                                 consumer: consumer);
+                        }
+                    }
+                }
+            }
+
+            return messages;
+        }
+        public async Task<uint> CountMessageByClientEmailAsync(string email)
+        {
+            uint ucount = 0;
+            foreach (Message message in await _messageRepository.FindByClientEmailFromAsync(email))
+            {
+                var connection = EnumExtensions.FactoryConfig.CreateConnection();
+                using (var channel = connection.CreateModel())
+                {
+                    QueueDeclareOk result = channel.QueueDeclare(queue: $"message_C{message.Chat.ChatId}",
+                                         durable: false,
+                                         exclusive: false,
+                                         autoDelete: false,
+                                         arguments: null);
+
+                    ucount = result.MessageCount;
+
+                }
+
+            }
+
+            return ucount;
         }
 
         public async Task<MessageResponse> SaveAsync(Message messageObj)
@@ -93,8 +149,7 @@ namespace ChatProducer.Services
                 var search = await _chatRepository.FindByIdAsync(messageObj.ChatId);
                 if (search == null){ return new MessageResponse($"Chat {messageObj.ChatId} not found"); }
 
-                var factory = new ConnectionFactory() { HostName = "localhost" }; ;
-                using (var connection = factory.CreateConnection())
+                var connection = EnumExtensions.FactoryConfig.CreateConnection();
                 using (var channel = connection.CreateModel())
                 {
                     channel.QueueDeclare(queue: $"message_C{messageObj.ChatId}",

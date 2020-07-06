@@ -2,6 +2,7 @@
 const uriChats = 'api/client/find-chat/';
 const uriSendMessage = 'api/message';
 const uriMessagesChat = 'api/message/find-message/';
+const uriMessagesCount = 'api/message/count-message/';
 let chats = [];
 let messagesChat = [];
 let user = {};
@@ -17,7 +18,6 @@ function getChats() {
         .then(data => _displayChats(data))
         .catch(error => console.error('Unable to get items.', error));
 }
-
 
 function login() {
 
@@ -109,6 +109,25 @@ function _displayChats(data) {
     //const button = document.createElement('button');
 
     data.forEach(client => {
+
+        let clientdiv = document.createElement('div');
+        let h3count = document.createElement('h3');
+        let spancount = document.createElement('span');
+        spancount.setAttribute('class', 'count');
+        spancount.setAttribute('id', 'count' + client.chat.chatId);
+
+        fetch(uriMessagesCount + client.clientEmail, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer  ' + user.clientToken
+            }
+        }).then(response => response.json())
+            .then(data => {
+                spancount.innerHTML = data;
+            })
+            .catch(error => console.error('Unable to get items.', error));
+
+        h3count.appendChild(spancount);
         let clientname = document.createElement('h1');
         clientname.innerText =  client.clientName;
 
@@ -116,13 +135,15 @@ function _displayChats(data) {
         clientemail.innerText = client.clientEmail;
 
         let openChatButton = document.createElement('button');
-        openChatButton.innerText = 'Open';
+        openChatButton.innerText = 'Chat now!';
         openChatButton.setAttribute('class', 'button');
-        openChatButton.setAttribute('onclick', `openChat(${client.chat.chatId})`);
+        openChatButton.setAttribute('onclick', `openChat(${client.chat.chatId}, 'true')`);
 
-        chat_content.appendChild(clientname);
-        chat_content.appendChild(clientemail);
-        chat_content.appendChild(openChatButton);
+        clientdiv.appendChild(h3count);
+        clientdiv.appendChild(clientname);
+        clientdiv.appendChild(clientemail);
+        clientdiv.appendChild(openChatButton);
+        chat_content.appendChild(clientdiv);
 
         //let td3 = tr.insertCell(2);
         //td3.appendChild(editButton);
@@ -134,11 +155,11 @@ function _displayChats(data) {
     chats = data;
 }
 
-function openChat(id) {
+function openChat(id, consume) {
 
-    setTimeout(function () {
+    //setTimeout(function () {
 
-    fetch(uriMessagesChat + user.clientEmail, {
+        fetch(uriMessagesChat + user.clientEmail + "/" + consume, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer  ' + user.clientToken
@@ -147,20 +168,32 @@ function openChat(id) {
         .then(data => _displaMessages(data, id))
             .catch(error => console.error('Unable to get items.', error));
 
-        openChat(id);
-    }, 1000);
+        //openChat(id, consume);
+    //}, 1000);
 }
 
 function _displaMessages(data, id) {
 
     const messages = document.getElementById('messages');
+    const count = document.getElementById('count'+id);
     const messages_finded = document.getElementById('messages_finded');
     messages_finded.innerHTML = '';
-    const send_btn = document.getElementById('send');
+    const send_btn = document.getElementById('input_button');
 
     data.forEach(message => {
 
         let div = document.createElement('div');
+
+        fetch(uriMessagesCount + message.chat.to, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer  ' + user.clientToken
+            }
+        }).then(response => response.json())
+            .then(data => {
+                count.innerHTML = data;
+            })
+            .catch(error => console.error('Unable to get items.', error));
 
         let h1 = document.createElement('h1');
         h1.innerText = message.messageContent;
@@ -173,7 +206,7 @@ function _displaMessages(data, id) {
             div.style.borderRadius = "10px 0px 0px 10px";
         } else {
             div.style.marginLeft = "0px";
-            div.style.backgroundColor = "#e0afaf";
+            div.style.backgroundColor = "#000";
             div.style.borderRadius = "0px 10px 10px 0px";
         }
 
@@ -211,10 +244,7 @@ function sendMessage(id){
         .then(response => response.json())
         .then(data => {
             messagecontent.value = '';
-            openChat(id);
+            openChat(id, "false");
         })
         .catch(error => console.error('Unable to add item.', error));
-}
-
-function timeout() {
 }

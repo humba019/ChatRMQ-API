@@ -38,7 +38,7 @@ namespace ChatProducer.Persistence.Contexts
             builder.Entity<Chat>().Property(a => a.To).IsRequired();
 
             builder.Entity<Chat>().HasData(
-               new Chat { ChatId = 1, From = "humba02@email", To = "humba01@email" }
+               new Chat { ChatId = 1, From = "humba02@email", To = "humba01@email" },
                new Chat { ChatId = 2, From = "humba01@email", To = "humba02@email" }
             );
 

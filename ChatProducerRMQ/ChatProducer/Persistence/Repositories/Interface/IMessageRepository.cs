@@ -14,6 +14,8 @@ namespace ChatProducer.Persistence.Repositories.Interface
         Task<Message> FindByIdAsync(int id);
         Task<List<Message>> FindByIdChatAsync(int id);
         Task<List<Message>> FindByClientEmailAsync(string email);
+        Task<List<Message>> FindByClientEmailFromAsync(string email);
+        Task<List<Message>> FindByClientEmailToAsync(string email);
         void Update(Message message);
         void Remove(Message message);
     }

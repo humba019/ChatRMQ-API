@@ -58,6 +58,38 @@ namespace ChatProducer.Persistence.Repositories
 
             return messages;
         }
+        public async Task<List<Message>> FindByClientEmailFromAsync(string email)
+        {
+            List<Message> messages = new List<Message>();
+            foreach (Message message in await _context.Message.ToListAsync())
+            {
+                Chat chat = await _context.Chat.FindAsync(message.ChatId);
+                message.Chat = chat;
+
+                if (message.Chat.From.Equals(email))
+                {
+                    messages.Add(message);
+                }
+            }
+
+            return messages;
+        }
+        public async Task<List<Message>> FindByClientEmailToAsync(string email)
+        {
+            List<Message> messages = new List<Message>();
+            foreach (Message message in await _context.Message.ToListAsync())
+            {
+                Chat chat = await _context.Chat.FindAsync(message.ChatId);
+                message.Chat = chat;
+
+                if (message.Chat.To.Equals(email))
+                {
+                    messages.Add(message);
+                }
+            }
+
+            return messages;
+        }
 
         public async Task<IEnumerable<Message>> ListAsync()
         {

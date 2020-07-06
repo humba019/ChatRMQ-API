@@ -33,7 +33,6 @@ namespace ChatProducer
             WebHost.CreateDefaultBuilder(args)
             .UseStartup<Startup>()
             .Build();
-
         
     }
 }
