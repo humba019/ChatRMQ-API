@@ -54,19 +54,22 @@ namespace ChatProducer.Services
             {
                 var searchTo = await _clientRepository.FindByIdAsync(chat.To);
                 if (searchTo == null)
-                    return new ChatResponse($"(to)Client {chat.To} not found"); 
+                {
+                    return new ChatResponse($"(to)Client {chat.To} not found");
+                }
 
                 var searchFrom = await _clientRepository.FindByIdAsync(chat.From);
                 if (searchFrom == null)
-                    return new ChatResponse($"(from)Client {chat.From} not found"); 
+                {
+                    return new ChatResponse($"(from)Client {chat.From} not found");
+                }
 
                 var searchFromChat = await _chatRepository.FindByFromAsync(chat.From);
-                if (searchFromChat != null)
-                    return new ChatResponse($"(from)Change {chat.From} to insert ");
-
                 var searchToChat = await _chatRepository.FindByToAsync(chat.To);
-                if (searchToChat != null)
-                    return new ChatResponse($"(to)Change {chat.To} to insert ");
+                if (searchFromChat != null && searchToChat != null)
+                {
+                    return new ChatResponse($"This chat already (from){chat.From} and (to){chat.To} exist ");                 
+                }
 
                 await _chatRepository.AddAsync(chat);
                 await _unitOfWork.CompleteAsync();

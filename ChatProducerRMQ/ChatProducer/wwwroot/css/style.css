@@ -1,4 +1,24 @@
 ﻿
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #cccccc;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #3b3b3b;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #1f1f1f;
+    }
+
 body {
     font-family: sans-serif;
     margin-left: 0px;
@@ -7,8 +27,68 @@ body {
     margin-bottom: 0px;
 }
 
+
+#messages {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    margin-top: 6vh;
+}
+
+#messages_finded {
+    width: 100%;
+    height: 86vh;
+    margin: auto;
+    background-image: linear-gradient(to bottom, #a52a2a, #c72020, #d11b1b);
+    overflow-y: scroll;
+    overflow-x: hidden !important;
+}
+
+    #messages_finded div {
+        width: 30%;
+        height: auto;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        box-shadow: 0 0 0.5em #1a1919;
+        background-color: #fff;
+        border-radius: 10px 0px 0px 10px;
+    }
+
+        #messages_finded div h1 {
+            color: #5c5c5c;
+            position: relative;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 15pt;
+            word-wrap: break-word;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+        #messages_finded div p {
+            color: #c1c1c1;
+            padding: 5px 10px;
+            font-weight: bold;
+            word-wrap: break-word;
+            text-align: right;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
+#input_values {
+    width: 100% !important;
+    height: 7vh !important;
+    display: inline-block !important;
+    background-image: linear-gradient(to bottom, #a52a2a, #c72020, #d11b1b);
+    overflow-x: hidden !important;
+    border: 0px solid #fff;
+    margin: 0px !important;
+}
+
 #input_message {
-    width: 70% !important;
+    width: 80% !important;
     height: 50px !important;
     display: inline-block !important;
     background-color: #fff !important;
@@ -27,6 +107,7 @@ body {
         font-family: sans-serif;
         background-color: #fff;
         overflow-x: hidden !important;
+        overflow-y: hidden !important;
         outline: none;
         resize: none;
         margin-top: 0px;
@@ -34,27 +115,31 @@ body {
     }
 
 #input_button {
-    width: 29% !important;
+    width: 19% !important;
     height: 50px !important;
     display: inline-block !important;
     overflow-y: hidden !important;
     overflow-x: hidden !important;
-    border: 0px solid #db1424;
-    color: #db1424 !important;
-    background-color: #fff !important;
+    border: 0px solid #1a1919;
+    color: #fff !important;
+    box-shadow: 0 0 1em #1a1919;
+    background-color: #333 !important;
     font-size: 16pt;
+    transition: 1s;
 }
 
     #input_button:hover {
-        width: 29% !important;
+        width: 19% !important;
         height: 50px !important;
         display: inline-block !important;
         overflow-y: hidden !important;
         overflow-x: hidden !important;
-        border: 0px solid #db1424;
+        border: 0px solid #1a1919;
         color: #fff !important;
-        background-color: #db1424 !important;
+        box-shadow: 0 0 1em #474747;
+        background-color: #1a1919 !important;
         font-size: 16pt;
+        transition: 1s;
     }
 
     #input_button p {
@@ -63,51 +148,6 @@ body {
         width: auto;
         padding: 10px;
     }
-
-#messages {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-
-#messages div {
-    width: 100%;
-    height: 500px;
-    margin: auto;
-    background-color: #a52a2a;
-    overflow-y: scroll;
-    overflow-x: hidden !important;
-}
-
-    #messages div div {
-        width: 50%;
-        height: auto;
-        margin-right: 0px;
-        margin-top: 10px !important;
-        margin-bottom: 10px !important;
-        overflow-x: hidden !important;
-        overflow-y: hidden !important;
-        background-color: #fff;
-        border-radius: 10px 0px 0px 10px;
-    }
-
-        #messages div div h1 {
-            color: #5c5c5c;
-            padding: 10px;
-            font-weight: bold;
-            word-wrap: break-word;
-            margin-bottom: 0px;
-            font-size: 15pt;
-        }
-
-        #messages div div p {
-            color: #c1c1c1;
-            padding: 5px;
-            font-weight: bold;
-            word-wrap: break-word;
-            text-align: right;
-            margin-top: 0px;
-        }
 
 .button {
     width: auto;
@@ -165,8 +205,16 @@ body {
 
 
 .chats {
+    margin-top: 6vh;
     width: 100%;
 }
+    .chats h1 {
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 0px;
+        margin-left: 20px;
+        font-size: 25pt;
+    }
 
     .chats div {
         width: 20%;
@@ -194,7 +242,9 @@ body {
             width: 100%;
             font-weight: bold;
             margin-bottom: 0px;
-        }
+            margin-left: 0px !important;
+            font-size: 20pt !important;
+        }   
         .chats div h3 {
             width: 100%;
             font-weight: bold;
@@ -211,3 +261,84 @@ body {
     margin-top: 0px;
     border-radius: 50%;
 }
+.clients {
+    margin-top: 6vh;
+    width: 100%;
+}
+
+    .clients h1 {
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 0px;
+        margin-left: 20px;
+        font-size: 25pt;
+    }
+
+    .clients div {
+        width: 20%;
+        padding: 10px;
+        box-shadow: 0 0 1em #db1424;
+        border-left: 2px solid #db1424;
+        display: inline-block;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+        .clients div h1 {
+            width: 70%;
+            display: inline-block;
+            text-align: left;
+            font-weight: bold;
+            margin-left: 0px !important;
+            font-size: 20pt !important;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+        .clients div button {
+            width: 50px;
+            font-weight: bold;
+            display: inline-block !important;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 10px;
+        }
+#form_login {
+    margin-top: 6vh;
+}
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 6vh;
+    z-index: 1000;
+}
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        font-weight:bold;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .navbar a:hover {
+            background: #f1f1f1;
+            font-weight: bold;
+            color: black;
+        }
+
+        .navbar a.active {
+            background-color: #db1424;
+            font-weight: bold;
+            color: white;
+        } 

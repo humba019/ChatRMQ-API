@@ -4,34 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <form action="javascript:void(0);" method="POST">
-        <div class="form_itens" id="form_login">
-            <div>
-                <label for="clientemail">Email</label><br>
-                <input type="email" name="clientemail" id="clientemail" value="humba02@email" placeholder="Your email address">
-            </div>
-            <div>
-                <label for="clientpass">Password</label><br>
-                <input type="password" name="clientpass" id="clientpass" value="12345" placeholder="Your pass">
-            </div>
-            <button class="button" onclick="login()">Sign In</button>
+        <div class="navbar">
+            <a href="#"  class="active" id="new_messages" style="display:none">New messages </a>
+            <a href="#" onclick="getChats()">Chats</a>
+            <a href="#" onclick="getClients()">Contacts</a>
         </div>
-        <p id="bearer_token"></p>
-        <div class="chats" id="chats">
-        </div>
-        <div id="messages" style="display:none;">
-            <div id="messages_finded">
+            <div class="form_itens" id="form_login">
+                <div>
+                    <label for="clientemail">Email</label><br>
+                    <input type="email" name="clientemail" id="clientemail" value="humba02@email" placeholder="Your email address">
+                </div>
+                <div>
+                    <label for="clientpass">Password</label><br>
+                    <input type="password" name="clientpass" id="clientpass" value="12345" placeholder="Your pass">
+                </div>
+                <button class="button" onclick="login()">Sign In</button>
             </div>
-            <div id="input_message">
-                <textarea id="messagecontent">Type here...</textarea>
+            <p id="bearer_token"></p>
+            <div class="clients" id="clients" style="display:none;">
             </div>
-            <div id="input_button" onclick="">
-                <p>Send</p>
+            <div class="chats" id="chats" style="display:none;">
             </div>
-        </div>
+            <div id="messages" style="display:none;">
+                <div id="messages_finded">
+                </div>
+                <div id="input_values">
+                    <div id="input_message">
+                        <textarea id="messagecontent">Type here...</textarea>
+                    </div>
+                    <div id="input_button" onclick="">
+                        <p>Send</p>
+                    </div>
+                </div>
+            </div>
     </form>
     <script src="js/script.js" asp-append-version="true"></script>
 </body>

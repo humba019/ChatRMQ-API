@@ -62,6 +62,20 @@ namespace ChatProducer.Services
             return clients;
         }
 
+        public async Task<List<Client>> FindAllClientsDiffByEmailAsync(string email)
+        {
+            List<Client> clients = new List<Client>();
+            foreach (Client client in await _clientRepository.ListAsync())
+            {
+                if (!client.ClientEmail.Equals(email))
+                {
+                    clients.Add(client);
+                }
+            }
+
+            return clients;
+        }
+
         public async Task<ClientResponse> FindByEmailAsync(string email)
         {
             var exist = await _clientRepository.FindByIdAsync(email);

@@ -64,6 +64,15 @@ namespace ChatProducer.Controllers
 
             return clients;
         }
+        [HttpGet("diff/{email}")]
+        public async Task<List<ClientResource>> GetClientDiffByEmailAsync(string email)
+        {
+            var clients = await _clientService.FindAllClientsDiffByEmailAsync(email);
+
+            var clientsResource = _mapper.Map<List<Client>, List<ClientResource>>(clients);
+
+            return clientsResource;
+        }
 
         [HttpPost]
         public async Task<ActionResult<ClientResource>> PostClientAsync([FromBody] SaveClientResource resource)

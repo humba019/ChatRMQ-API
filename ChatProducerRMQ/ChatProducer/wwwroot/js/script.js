@@ -1,9 +1,12 @@
 ﻿const uriLogin = 'api/login';
 const uriChats = 'api/client/find-chat/';
+const uriChat = 'api/chat';
+const uriClients = 'api/client/diff/';
 const uriSendMessage = 'api/message';
 const uriMessagesChat = 'api/message/find-message/';
 const uriMessagesCount = 'api/message/count-message/';
 let chats = [];
+let clients = [];
 let messagesChat = [];
 let user = {};
 let chat_id = 0;
@@ -18,7 +21,17 @@ function getChats() {
         .then(data => _displayChats(data))
         .catch(error => console.error('Unable to get items.', error));
 }
+function getClients() {
+    fetch(uriClients + user.clientEmail, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer  ' + user.clientToken
+        }
+    }).then(response => response.json())
+        .then(data => _displayClients(data))
+        .catch(error => console.error('Unable to get items.', error));
 
+}
 function login() {
 
     const clientemail = document.getElementById('clientemail');
@@ -100,9 +113,76 @@ function _displayCount(itemCount) {
     document.getElementById('counter').innerText = `${itemCount} ${name}`;
 }
 */
+function _displayClients(data) {
+    const client_content = document.getElementById('clients');
+    client_content.innerHTML = '';
+
+    //_displayCount(data.length);
+
+    //const button = document.createElement('button');
+
+    data.forEach(client => {
+
+        let clientdiv = document.createElement('div');
+
+        let clientname = document.createElement('h1');
+        clientname.innerText = client.clientName;
+
+        let createChatButton = document.createElement('button');
+        createChatButton.setAttribute('class', 'button');
+        createChatButton.setAttribute('onclick', `createChat('${client.clientEmail}')`);
+
+        let icon = document.createElement('i');
+        icon.innerText = "mail";
+        icon.setAttribute('class', 'large material-icons');
+
+        createChatButton.appendChild(icon);
+        createChatButton.style.marginRight = "10px";
+        clientdiv.appendChild(createChatButton);
+        clientdiv.appendChild(clientname);
+        client_content.appendChild(clientdiv);
+
+        //let td3 = tr.insertCell(2);
+        //td3.appendChild(editButton);
+
+        //let td4 = tr.insertCell(3);
+        //td4.appendChild(deleteButton);
+    });
+
+    configBeforeOpenClient();
+
+    clients = data;
+
+}
+
+function createChat(to) {
+
+    const chat = {
+        from: user.clientEmail,
+        to: to
+    };
+
+    fetch(uriChat, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer  ' + user.clientToken
+        },
+        body: JSON.stringify(chat)
+    })
+        .then(response => response.json())
+        .then(data => {
+            getChats();
+        })
+        .catch(error => console.error('Unable to add item.', error));
+}
+
 function _displayChats(data) {
     const chat_content = document.getElementById('chats');
     chat_content.innerHTML = '';
+
+    const new_messages = document.getElementById('new_messages');
 
     //_displayCount(data.length);
 
@@ -124,6 +204,8 @@ function _displayChats(data) {
         }).then(response => response.json())
             .then(data => {
                 spancount.innerHTML = data;
+                new_messages.innerHTML = `${data} Messages`;
+                new_messages.style.display = "block";
             })
             .catch(error => console.error('Unable to get items.', error));
 
@@ -152,9 +234,11 @@ function _displayChats(data) {
         //td4.appendChild(deleteButton);
     });
 
-    chats = data;
-}
+    configBeforeOpenChat();
 
+    chats = data;
+
+}
 function openChat(id, consume) {
 
     //setTimeout(function () {
@@ -175,7 +259,8 @@ function openChat(id, consume) {
 function _displaMessages(data, id) {
 
     const messages = document.getElementById('messages');
-    const count = document.getElementById('count'+id);
+    const count = document.getElementById('count' + id);
+    const new_messages = document.getElementById('new_messages');
     const messages_finded = document.getElementById('messages_finded');
     messages_finded.innerHTML = '';
     const send_btn = document.getElementById('input_button');
@@ -192,6 +277,8 @@ function _displaMessages(data, id) {
         }).then(response => response.json())
             .then(data => {
                 count.innerHTML = data;
+                new_messages.innerHTML = `${data} Messages`;
+                new_messages.style.display = "block";
             })
             .catch(error => console.error('Unable to get items.', error));
 
@@ -217,8 +304,8 @@ function _displaMessages(data, id) {
     });
 
     send_btn.setAttribute('onclick', `sendMessage(${id})`);
-    messages.style.display = "block";
-    messages_finded.style.display = "block";
+
+    configBeforeOpenMessage();
 
     messagesChat = data;
 }
@@ -247,4 +334,36 @@ function sendMessage(id){
             openChat(id, "false");
         })
         .catch(error => console.error('Unable to add item.', error));
+}
+
+function configBeforeOpenMessage() {
+    document.getElementById('bearer_token').style.display = "none";
+    document.getElementById('form_login').style.display = "none";
+    document.getElementById('clients').style.display = "none";
+    document.getElementById('chats').style.display = "none";
+    document.getElementById('messages').style.display = "block";
+}
+
+function configBeforeOpenChat() {
+    document.getElementById('bearer_token').style.display = "none";
+    document.getElementById('form_login').style.display = "none";
+    document.getElementById('clients').style.display = "none";
+    document.getElementById('chats').style.display = "block";
+    document.getElementById('messages').style.display = "none";
+}
+function configBeforeOpenClient() {
+    //document.getElementById('').style.display = "";
+    document.getElementById('bearer_token').style.display = "none";
+    document.getElementById('form_login').style.display = "none";
+    document.getElementById('clients').style.display = "block";
+    document.getElementById('chats').style.display = "none";
+    document.getElementById('messages').style.display = "none";
+
+}
+function configBeforeOpenFormLogin() {
+    document.getElementById('bearer_token').style.display = "none";
+    document.getElementById('form_login').style.display = "block";
+    document.getElementById('clients').style.display = "none";
+    document.getElementById('chats').style.display = "none";
+    document.getElementById('messages').style.display = "none";
 }
