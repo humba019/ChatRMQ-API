@@ -266,6 +266,7 @@ C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\De
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.csprojAssemblyReference.cache
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.csproj.CoreCompileInputs.cache
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\humbe\Documents\Development\ChatRMQ\ChatProducerRMQ\ChatProducer\obj\Debug\netcoreapp3.1\ChatProducer.AssemblyInfoInputs.cache

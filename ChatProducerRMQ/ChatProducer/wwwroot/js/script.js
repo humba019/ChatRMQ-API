@@ -10,6 +10,7 @@ let clients = [];
 let messagesChat = [];
 let user = {};
 let chat_id = 0;
+let chat_messages_count = 0;
 
 function getChats() {
     fetch(uriChats + user.clientEmail, {
@@ -178,6 +179,25 @@ function createChat(to) {
         .catch(error => console.error('Unable to add item.', error));
 }
 
+function searchInLoopCount(id, email) {
+
+    setTimeout(function () {
+        fetch(uriMessagesCount + email, {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer  ' + user.clientToken
+            }
+        }).then(response => response.json())
+            .then(data => {
+                if (data > 0) {
+                    openChat(id, email, 'true');
+                }
+            })
+            .catch(error => console.error('Unable to get items.', error));
+        searchInLoopCount(id, email);
+    }, 1000);
+}
+
 function _displayChats(data) {
     const chat_content = document.getElementById('chats');
     chat_content.innerHTML = '';
@@ -219,7 +239,7 @@ function _displayChats(data) {
         let openChatButton = document.createElement('button');
         openChatButton.innerText = 'Chat now!';
         openChatButton.setAttribute('class', 'button');
-        openChatButton.setAttribute('onclick', `openChat(${client.chat.chatId}, 'true')`);
+        openChatButton.setAttribute('onclick', `openChat(${client.chat.chatId},'${client.clientEmail}', 'true')`);
 
         clientdiv.appendChild(h3count);
         clientdiv.appendChild(clientname);
@@ -239,7 +259,7 @@ function _displayChats(data) {
     chats = data;
 
 }
-function openChat(id, consume) {
+function openChat(id, email, consume) {
 
     //setTimeout(function () {
 
@@ -249,14 +269,15 @@ function openChat(id, consume) {
             'Authorization': 'Bearer  ' + user.clientToken
         }
     }).then(response => response.json())
-        .then(data => _displaMessages(data, id))
-            .catch(error => console.error('Unable to get items.', error));
+        .then(data => _displaMessages(data, email, id))
+        .catch(error => console.error('Unable to get items.', error));
 
+    searchInLoopCount(id, email);
         //openChat(id, consume);
     //}, 1000);
 }
 
-function _displaMessages(data, id) {
+function _displaMessages(data, email, id) {
 
     const messages = document.getElementById('messages');
     const count = document.getElementById('count' + id);
@@ -288,11 +309,11 @@ function _displaMessages(data, id) {
         p.innerText = message.chat.from;
 
         if (message.chat.from == user.clientEmail) {
-            div.style.marginRight = "0px";
+            div.style.marginLeft = "50%";
             div.style.backgroundColor = "#fff";
             div.style.borderRadius = "10px 0px 0px 10px";
         } else {
-            div.style.marginLeft = "0px";
+            div.style.marginLeft = "0%";
             div.style.backgroundColor = "#000";
             div.style.borderRadius = "0px 10px 10px 0px";
         }
@@ -303,14 +324,14 @@ function _displaMessages(data, id) {
 
     });
 
-    send_btn.setAttribute('onclick', `sendMessage(${id})`);
+    send_btn.setAttribute('onclick', `sendMessage(${id}, '${email}')`);
 
     configBeforeOpenMessage();
 
     messagesChat = data;
 }
 
-function sendMessage(id){
+function sendMessage(id, email){
 
     const messagecontent = document.getElementById('messagecontent');
 
@@ -331,7 +352,7 @@ function sendMessage(id){
         .then(response => response.json())
         .then(data => {
             messagecontent.value = '';
-            openChat(id, "false");
+            openChat(id, email, "false");
         })
         .catch(error => console.error('Unable to add item.', error));
 }

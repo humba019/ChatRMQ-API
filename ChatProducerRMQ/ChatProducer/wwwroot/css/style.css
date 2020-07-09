@@ -45,7 +45,7 @@ body {
 }
 
     #messages_finded div {
-        width: 30%;
+        width: 50%;
         height: auto;
         margin-top: 10px !important;
         margin-bottom: 10px !important;
@@ -207,6 +207,7 @@ body {
 .chats {
     margin-top: 6vh;
     width: 100%;
+    margin-bottom: 0px;
 }
     .chats h1 {
         width: 100%;
@@ -262,8 +263,9 @@ body {
     border-radius: 50%;
 }
 .clients {
-    margin-top: 6vh;
+    margin-top: 8vh;
     width: 100%;
+    margin-bottom: 0px;
 }
 
     .clients h1 {
@@ -308,7 +310,7 @@ body {
             margin-right: 10px;
         }
 #form_login {
-    margin-top: 6vh;
+    margin-top: 15vh;
 }
 .navbar {
     overflow: hidden;
@@ -341,4 +343,203 @@ body {
             background-color: #db1424;
             font-weight: bold;
             color: white;
-        } 
+        }
+
+@media screen and (max-width: 500px) {
+
+    .navbar {
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 6vh;
+        z-index: 1000;
+    }
+
+        .navbar a {
+            float: left;
+            display: block;
+            font-weight: bold;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+            .navbar a:hover {
+                background: #f1f1f1;
+                font-weight: bold;
+                color: black;
+            }
+
+    .chats {
+        margin-top: 6vh;
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+        .chats h1 {
+            width: 100%;
+            font-weight: bold;
+            margin-bottom: 0px;
+            font-size: 25pt;
+            padding: 10px;
+        }
+
+        .chats div {
+            width: 98%;
+            padding: 10px;
+            box-shadow: 0 0 0.4em #000;
+            border-left: 2px solid #db1424;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+            .chats div p {
+                width: 100%;
+                background-color: #db1424;
+                color: #fff;
+                padding: 10px 0px;
+                text-align: center;
+                font-weight: bold;
+                margin-top: 0px;
+            }
+
+            .chats div h1 {
+                width: 100%;
+                font-weight: bold;
+                margin-bottom: 0px;
+                margin-left: 0px !important;
+                font-size: 20pt !important;
+            }
+
+            .chats div h3 {
+                width: 100%;
+                font-weight: bold;
+                padding: 10px 0px;
+                margin-top: 0px;
+            }
+
+    .navbar a.active {
+        background-color: #db1424;
+        font-weight: bold;
+        color: white;
+    }
+
+    .clients {
+        margin-top: 6vh;
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+        .clients h1 {
+            width: 100%;
+            font-weight: bold;
+            margin-bottom: 0px;
+            font-size: 25pt;
+            padding: 10px;
+        }
+
+        .clients div {
+            width: 98%;
+            padding: 10px;
+            box-shadow: 0 0 0.5em #000;
+            border-left: 2px solid #db1424;
+            display: block;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+
+            .clients div h1 {
+                width: 70%;
+                display: inline-block;
+                text-align: left;
+                font-weight: bold;
+                margin-left: 0px !important;
+                font-size: 20pt !important;
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+            .clients div button {
+                width: 50px;
+                font-weight: bold;
+                display: inline-block !important;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 10px;
+            }
+
+    .form_itens {
+        width: 100%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+        .form_itens div {
+            width: 100%;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+            .form_itens div label {
+                width: 100%;
+                padding: 20px 0px;
+                font-size: 15pt;
+                font-weight: bold;
+                font-family: sans-serif;
+                color: #a52a2a;
+            }
+
+            .form_itens div input {
+                width: 80%;
+                font-size: 15pt;
+                font-weight: bold;
+                font-family: sans-serif;
+                color: #a52a2a;
+                margin: auto;
+                padding: 5px 5px;
+                outline: none;
+                border-radius: 10px;
+                border: 2px solid #a52a2a;
+                background-color: #fff;
+                transition: 1s;
+            }
+
+                .form_itens div input:focus {
+                    width: 80%;
+                    font-size: 15pt;
+                    font-weight: bold;
+                    font-family: sans-serif;
+                    color: #fff;
+                    margin: auto;
+                    padding: 5px 5px;
+                    outline: none;
+                    border-radius: 10px;
+                    border: 2px solid #a52a2a;
+                    background-color: #a52a2a;
+                    transition: 1s;
+                }
+
+    .button {
+        width: auto;
+        font-size: 16pt;
+        font-weight: bold;
+        font-family: sans-serif;
+        color: #db1424;
+        margin: auto;
+        text-align: center;
+        outline: none;
+        border-radius: 10px;
+        border: 2px solid #db1424;
+        background-color: #fff;
+    }
+}
