@@ -47,11 +47,9 @@ namespace ChatProducer.Persistence.Contexts
             builder.Entity<Message>().HasKey(a => a.MessageId);
             builder.Entity<Message>().Property(a => a.MessageId).IsRequired().ValueGeneratedOnAdd();
             builder.Entity<Message>().Property(a => a.MessageContent).IsRequired();
+            builder.Entity<Message>().Property(a => a.DateSended).IsRequired();
             builder.Entity<Message>().Property(a => a.ChatId).IsRequired();
 
-            builder.Entity<Message>().HasData(
-               new Message { MessageId = 1, MessageContent = "Olá boa tarde!", ChatId = 1 }
-            );
 
         }
     }

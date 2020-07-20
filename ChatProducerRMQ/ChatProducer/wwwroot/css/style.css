@@ -1,5 +1,4 @@
-﻿
-/* width */
+﻿/* width */
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -21,12 +20,12 @@
 
 body {
     font-family: sans-serif;
+    width: 100%;
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
-
 
 #messages {
     width: 100%;
@@ -34,19 +33,32 @@ body {
     margin: auto;
     margin-top: 6vh;
 }
+#messages_name {
+    width: 100%;
+    height: 5vh;
+    text-align: left;
+    padding: 1.2vh 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: #5c5c5c;
+    background-image: linear-gradient(to left, #171717, #212121, #333333);
+}
 
 #messages_finded {
-    width: 100%;
-    height: 86vh;
-    margin: auto;
+    width: 100% !important;
+    height: 79.1vh;
+    margin-right: 0px !important;
     background-image: linear-gradient(to bottom, #a52a2a, #c72020, #d11b1b);
     overflow-y: scroll;
     overflow-x: hidden !important;
 }
 
     #messages_finded div {
-        width: 50%;
+        width: 50% !important;
+        margin-right: 0px !important;
         height: auto;
+        display: block;
+        margin-left: 50%;
         margin-top: 10px !important;
         margin-bottom: 10px !important;
         overflow-x: hidden !important;
@@ -81,8 +93,9 @@ body {
     width: 100% !important;
     height: 7vh !important;
     display: inline-block !important;
-    background-image: linear-gradient(to bottom, #a52a2a, #c72020, #d11b1b);
+    background-color: #333;
     overflow-x: hidden !important;
+    overflow-y: hidden !important;
     border: 0px solid #fff;
     margin: 0px !important;
 }
@@ -114,40 +127,27 @@ body {
         padding: 10px;
     }
 
-#input_button {
+#input_button_div {
     width: 19% !important;
     height: 50px !important;
     display: inline-block !important;
     overflow-y: hidden !important;
     overflow-x: hidden !important;
-    border: 0px solid #1a1919;
+    border: 0px solid #333;
     color: #fff !important;
-    box-shadow: 0 0 1em #1a1919;
     background-color: #333 !important;
     font-size: 16pt;
     transition: 1s;
+    cursor: pointer;
 }
 
-    #input_button:hover {
-        width: 19% !important;
-        height: 50px !important;
-        display: inline-block !important;
-        overflow-y: hidden !important;
-        overflow-x: hidden !important;
-        border: 0px solid #1a1919;
-        color: #fff !important;
-        box-shadow: 0 0 1em #474747;
-        background-color: #1a1919 !important;
-        font-size: 16pt;
-        transition: 1s;
-    }
-
-    #input_button p {
-        margin: auto;
-        height: auto;
-        width: auto;
-        padding: 10px;
-    }
+#input_button_p {
+    margin: auto;
+    height: auto;
+    width: auto;
+    padding: 10px;
+    cursor: pointer !important;
+}
 
 .button {
     width: auto;
@@ -157,15 +157,15 @@ body {
     color: #db1424;
     margin: auto;
     text-align: center;
-    padding: 5px 5px;
     outline: none;
     border-radius: 10px;
     border: 2px solid #db1424;
     background-color: #fff;
+    cursor: pointer !important;
 }
 
 .form_itens {
-    width: 70%;
+    width: 100%;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -173,7 +173,7 @@ body {
 }
 
     .form_itens div {
-        width: 100%;
+        width: 50%;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -203,14 +203,28 @@ body {
             transition: 1s;
         }
 
+            .form_itens div input:focus {
+                width: 70%;
+                font-size: 13pt;
+                font-weight: bold;
+                font-family: sans-serif;
+                color: #fff;
+                margin: auto;
+                padding: 5px 5px;
+                outline: none;
+                border-radius: 10px;
+                border: 2px solid #a52a2a;
+                background-color: #a52a2a;
+                transition: 1s;
+            }
 
 .chats {
     margin-top: 6vh;
     width: 100%;
     margin-bottom: 0px;
 }
+
     .chats h1 {
-        width: 100%;
         font-weight: bold;
         margin-bottom: 0px;
         margin-left: 20px;
@@ -225,13 +239,12 @@ body {
         display: inline-block;
         margin-top: 20px;
         margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
+        border-radius: 10px;
     }
 
         .chats div p {
             width: 100%;
-            background-color: #db1424;
+            background-image: linear-gradient(to left, #a52a2a, #c72020, #d11b1b);
             color: #fff;
             padding: 10px 0px;
             text-align: center;
@@ -245,7 +258,8 @@ body {
             margin-bottom: 0px;
             margin-left: 0px !important;
             font-size: 20pt !important;
-        }   
+        }
+
         .chats div h3 {
             width: 100%;
             font-weight: bold;
@@ -262,6 +276,7 @@ body {
     margin-top: 0px;
     border-radius: 50%;
 }
+
 .clients {
     margin-top: 8vh;
     width: 100%;
@@ -269,7 +284,6 @@ body {
 }
 
     .clients h1 {
-        width: 100%;
         font-weight: bold;
         margin-bottom: 0px;
         margin-left: 20px;
@@ -285,8 +299,6 @@ body {
         border-radius: 10px;
         margin-top: 20px;
         margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
     }
 
         .clients div h1 {
@@ -308,10 +320,9 @@ body {
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 10px;
+            cursor: pointer !important;
         }
-#form_login {
-    margin-top: 15vh;
-}
+
 .navbar {
     overflow: hidden;
     background-color: #333;
@@ -322,31 +333,37 @@ body {
     z-index: 1000;
 }
 
-    .navbar a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        font-weight:bold;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
+#form_login {
+    margin-top: 15vh;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    font-weight: bold;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    cursor: pointer !important;
+}
+
+    .navbar a:hover {
+        background: #f1f1f1;
+        font-weight: bold;
+        color: black;
+        cursor: pointer !important;
     }
 
-        .navbar a:hover {
-            background: #f1f1f1;
-            font-weight: bold;
-            color: black;
-        }
-
-        .navbar a.active {
-            background-color: #db1424;
-            font-weight: bold;
-            color: white;
-        }
+    .navbar a.active {
+        background-color: #db1424;
+        font-weight: bold;
+        color: white;
+        cursor: pointer !important;
+    } 
 
 @media screen and (max-width: 500px) {
-
     .navbar {
         overflow: hidden;
         background-color: #333;
@@ -366,12 +383,21 @@ body {
             padding: 14px 16px;
             text-decoration: none;
             font-size: 17px;
+            cursor: pointer !important;
         }
 
             .navbar a:hover {
                 background: #f1f1f1;
                 font-weight: bold;
                 color: black;
+                cursor: pointer !important;
+            }
+
+            .navbar a.active {
+                background-color: #db1424;
+                font-weight: bold;
+                color: white;
+                cursor: pointer !important;
             }
 
     .chats {
@@ -381,7 +407,6 @@ body {
     }
 
         .chats h1 {
-            width: 100%;
             font-weight: bold;
             margin-bottom: 0px;
             font-size: 25pt;
@@ -389,7 +414,8 @@ body {
         }
 
         .chats div {
-            width: 98%;
+            width: auto;
+            margin: auto;
             padding: 10px;
             box-shadow: 0 0 0.4em #000;
             border-left: 2px solid #db1424;
@@ -409,7 +435,7 @@ body {
             }
 
             .chats div h1 {
-                width: 100%;
+                width: auto;
                 font-weight: bold;
                 margin-bottom: 0px;
                 margin-left: 0px !important;
@@ -423,11 +449,6 @@ body {
                 margin-top: 0px;
             }
 
-    .navbar a.active {
-        background-color: #db1424;
-        font-weight: bold;
-        color: white;
-    }
 
     .clients {
         margin-top: 6vh;
@@ -436,7 +457,6 @@ body {
     }
 
         .clients h1 {
-            width: 100%;
             font-weight: bold;
             margin-bottom: 0px;
             font-size: 25pt;
@@ -444,7 +464,8 @@ body {
         }
 
         .clients div {
-            width: 98%;
+            width: auto;
+            margin: auto;
             padding: 10px;
             box-shadow: 0 0 0.5em #000;
             border-left: 2px solid #db1424;
@@ -455,7 +476,7 @@ body {
         }
 
             .clients div h1 {
-                width: 70%;
+                width: auto;
                 display: inline-block;
                 text-align: left;
                 font-weight: bold;
@@ -473,6 +494,7 @@ body {
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 10px;
+                cursor: pointer !important;
             }
 
     .form_itens {
@@ -541,5 +563,127 @@ body {
         border-radius: 10px;
         border: 2px solid #db1424;
         background-color: #fff;
+        cursor: pointer !important;
+    }
+    #messages {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        margin-top: 6vh;
+    }
+    #messages_name {
+        width: 100%;
+        height: 5vh;
+        text-align: left;
+        padding: 1.2vh 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        color: #5c5c5c;
+        background-image: linear-gradient(to left, #171717, #212121, #333333);
+    }
+
+    #messages_finded {
+        width: 100% !important;
+        height: 79.1vh;
+        margin-right: 0px !important;
+        background-image: linear-gradient(to bottom, #a52a2a, #c72020, #d11b1b);
+        overflow-y: scroll;
+        overflow-x: hidden !important;
+    }
+
+        #messages_finded div {
+            width: 50% !important;
+            margin-right: 0px !important;
+            height: auto;
+            display: block;
+            margin-left: 50%;
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            box-shadow: 0 0 0.5em #1a1919;
+            background-color: #fff;
+            border-radius: 10px 0px 0px 10px;
+        }
+
+            #messages_finded div h1 {
+                color: #5c5c5c;
+                position: relative;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 15pt;
+                word-wrap: break-word;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+            #messages_finded div p {
+                color: #c1c1c1;
+                padding: 5px 10px;
+                font-weight: bold;
+                word-wrap: break-word;
+                text-align: right;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+
+    #input_values {
+        width: 100% !important;
+        height: 7vh !important;
+        display: inline-block !important;
+        background-color: #333;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        border: 0px solid #fff;
+        margin: 0px !important;
+    }
+
+    #input_message {
+        width: 80% !important;
+        height: 50px !important;
+        display: inline-block !important;
+        background-color: #fff !important;
+        overflow-x: hidden !important;
+        border: 0px solid #fff;
+        margin: 0px !important;
+    }
+
+        #input_message textarea {
+            width: 100%;
+            height: 100% !important;
+            font-size: 16pt;
+            font-weight: bold;
+            border: 0px;
+            color: #5c5c5c;
+            font-family: sans-serif;
+            background-color: #fff;
+            overflow-x: hidden !important;
+            overflow-y: hidden !important;
+            outline: none;
+            resize: none;
+            margin-top: 0px;
+            padding: 10px;
+        }
+
+    #input_button_div {
+        width: auto !important;
+        height: 50px !important;
+        display: inline-block !important;
+        overflow-y: hidden !important;
+        overflow-x: hidden !important;
+        border: 0px solid #1a1919;
+        color: #fff !important;
+        box-shadow: 0 0 1em #1a1919;
+        background-color: #333 !important;
+        font-size: 16pt;
+        transition: 1s;
+        cursor: pointer;
+    }
+    #iinput_button_p {
+        margin: auto;
+        height: auto;
+        width: auto;
+        padding: 10px;
+        cursor: pointer !important;
     }
 }

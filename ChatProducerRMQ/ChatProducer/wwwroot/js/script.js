@@ -203,6 +203,7 @@ function _displayChats(data) {
     chat_content.innerHTML = '';
 
     const new_messages = document.getElementById('new_messages');
+    new_messages.style.display = "none";
 
     //_displayCount(data.length);
 
@@ -284,7 +285,9 @@ function _displaMessages(data, email, id) {
     const new_messages = document.getElementById('new_messages');
     const messages_finded = document.getElementById('messages_finded');
     messages_finded.innerHTML = '';
-    const send_btn = document.getElementById('input_button');
+    const send_btn_p = document.getElementById('input_button_p');
+    const messages_name = document.getElementById('messages_name');
+    messages_name.innerHTML = `&nbsp;<i class='large material-icons'>person</i> ${email}`;
 
     data.forEach(message => {
 
@@ -306,7 +309,7 @@ function _displaMessages(data, email, id) {
         let h1 = document.createElement('h1');
         h1.innerText = message.messageContent;
         let p = document.createElement('p');
-        p.innerText = message.chat.from;
+        p.innerText = message.dateSended;
 
         if (message.chat.from == user.clientEmail) {
             div.style.marginLeft = "50%";
@@ -324,7 +327,7 @@ function _displaMessages(data, email, id) {
 
     });
 
-    send_btn.setAttribute('onclick', `sendMessage(${id}, '${email}')`);
+    send_btn_p.setAttribute('onclick', `sendMessage(${id}, '${email}')`);
 
     configBeforeOpenMessage();
 

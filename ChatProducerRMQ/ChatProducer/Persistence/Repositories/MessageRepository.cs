@@ -19,6 +19,8 @@ namespace ChatProducer.Persistence.Repositories
         public MessageRepository(AppDbContext context) : base (context){  }
         public async Task AddAsync(Message messageObj)
         {
+            DateTime time = DateTime.Now;
+            messageObj.DateSended = time.ToString("f");
             await _context.Message.AddAsync(messageObj);
         }
 

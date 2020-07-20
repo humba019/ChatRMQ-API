@@ -9,6 +9,7 @@ namespace ChatProducer.Domain.Models
     {
         public int MessageId { get; set; }
         public string MessageContent { get; set; }
+        public string DateSended { get; set; }
         public int ChatId { get; set; }
         public Chat Chat { get; set; }
     }

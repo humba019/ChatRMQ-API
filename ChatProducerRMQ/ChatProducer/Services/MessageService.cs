@@ -166,7 +166,6 @@ namespace ChatProducer.Services
                                             basicProperties: null,
                                             body: body);
                 }
-
                 await _messageRepository.AddAsync(messageObj);
                 await _unitOfWork.CompleteAsync();
 

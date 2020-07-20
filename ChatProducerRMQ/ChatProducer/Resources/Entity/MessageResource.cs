@@ -9,6 +9,7 @@ namespace ChatProducer.Resources.Entity
     {
         public int MessageId { get; set; }
         public string MessageContent { get; set; }
+        public string DateSended { get; set; }
         public ChatResource Chat { get; set; }
     }
 }

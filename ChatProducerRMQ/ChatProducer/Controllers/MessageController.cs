@@ -1,22 +1,14 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using AutoMapper;
-using ChatProducer.Configs;
+﻿using AutoMapper;
 using ChatProducer.Domain.Models;
 using ChatProducer.Extensions;
 using ChatProducer.Resources;
 using ChatProducer.Resources.Entity;
 using ChatProducer.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using RabbitMQ.Client;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ChatProducer.Controllers
 {
@@ -25,15 +17,12 @@ namespace ChatProducer.Controllers
     [Route("api/message")]
     public class MessageController : Controller
     {
-        private ILogger<ClientController> _logger;
         private readonly IMessageService _messageService;
         private readonly IMapper _mapper;
         public MessageController(
-            ILogger<ClientController> logger, 
             IMessageService messageService, 
             IMapper mapper)
         {
-            _logger = logger;
             _messageService = messageService;
             _mapper = mapper;
         }
